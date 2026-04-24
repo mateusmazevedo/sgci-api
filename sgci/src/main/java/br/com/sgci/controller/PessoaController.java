@@ -18,10 +18,11 @@ import br.com.sgci.controller.schema.PessoaResponse;
 import br.com.sgci.controller.schema.PessoaUpd;
 import br.com.sgci.manager.PessoaManager;
 import br.com.sgci.model.Pessoa;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 
-
+@Tag(name = "Pessoa::Pessoa")
 @RestController
 @RequestMapping("pessoas")
 
