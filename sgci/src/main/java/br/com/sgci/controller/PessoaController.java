@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.sgci.controller.schema.PessoaFilter;
 import br.com.sgci.controller.schema.PessoaReq;
 import br.com.sgci.controller.schema.PessoaResponse;
 import br.com.sgci.controller.schema.PessoaUpd;
@@ -48,8 +49,8 @@ public class PessoaController {
 		}
 	
 	@GetMapping
-	public ResponseEntity<List<PessoaResponse>> findAll()	{
-		return ResponseEntity.ok(pessoaManager.findAll());
+	public ResponseEntity<List<PessoaResponse>> findAll(@Valid PessoaFilter filtros)	{
+		return ResponseEntity.ok(pessoaManager.findAll(filtros));
 		}
 		
 		
