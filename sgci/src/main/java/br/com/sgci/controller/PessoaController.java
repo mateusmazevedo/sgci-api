@@ -17,6 +17,7 @@ import br.com.sgci.controller.schema.PessoaFilter;
 import br.com.sgci.controller.schema.PessoaReq;
 import br.com.sgci.controller.schema.PessoaResponse;
 import br.com.sgci.controller.schema.PessoaUpd;
+import br.com.sgci.controller.schema.ResponsePagedCommom;
 import br.com.sgci.manager.PessoaManager;
 import br.com.sgci.model.Pessoa;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -49,7 +50,7 @@ public class PessoaController {
 		}
 	
 	@GetMapping
-	public ResponseEntity<List<PessoaResponse>> findAll(@Valid PessoaFilter filtros)	{
+	public ResponseEntity<ResponsePagedCommom<PessoaResponse>> findAll(@Valid PessoaFilter filtros)	{
 		return ResponseEntity.ok(pessoaManager.findAll(filtros));
 		}
 		
@@ -69,6 +70,11 @@ public class PessoaController {
 		pessoaManager.deletePessoa(idPessoa);
 		return ResponseEntity.ok().build();
 	}
+	
+	@GetMapping("/exportar-csv")
+	 public ResponseEntity<String> exportarCSV() {
+	     return ResponseEntity.ok(pessoaManager.exportarParaBase64());
+	 }
 		
 	
 
